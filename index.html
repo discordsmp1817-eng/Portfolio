@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelancer & Product Consultant | Minimal Portfolio</title>
+  <meta name="description" content="Clean, animated, and responsive portfolio built with modern HTML5, CSS3, and JavaScript.">
+
+  <!-- Entry animation flag: runs before first paint so the site never flashes before the intro.
+       Skipped automatically for visitors who prefer reduced motion. -->
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        document.documentElement.classList.add('intro-active');
+        // Safety net: never leave the site locked if something goes wrong
+        setTimeout(function () {
+          document.documentElement.classList.remove('intro-active', 'intro-wipe');
+        }, 9000);
+      }
+    })();
+  </script>
+
+  <!-- Plus Jakarta Sans Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Entry animation overlay (the flying logo is created by script.js) -->
+  <div class="intro-overlay" id="introOverlay" aria-hidden="true"></div>
+
+  <!-- Hyperspeed animated background (see hyperspeed.js) -->
+  <div class="hyperspeed-container" id="hyperspeed" aria-hidden="true"></div>
+
+  <!-- Custom Mouse Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Navigation -->
+  <header class="header" id="navbar">
+    <div class="container nav-content">
+      <a href="#home" class="logo">Pavan Ambulkar<span class="logo-dot">.</span></a>
+
+      <nav class="desktop-nav" aria-label="Primary">
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        <a href="#work" class="nav-link" data-section="work">Work</a>
+        <a href="#services" class="nav-link" data-section="services">Services</a>
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-dark nav-btn">
+          <span class="nav-btn-dot"></span>
+          <span>Hire Me</span>
+          <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+        <button class="mobile-toggle" id="menuToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <!-- Scroll progress line -->
+      <span class="nav-progress" id="navProgress" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-nav-links">
+      <a href="#work" class="mobile-link" style="--i:0"><span class="mobile-num">01</span>Work</a>
+      <a href="#services" class="mobile-link" style="--i:1"><span class="mobile-num">02</span>Services</a>
+      <a href="#about" class="mobile-link" style="--i:2"><span class="mobile-num">03</span>About</a>
+      <a href="#contact" class="mobile-link" style="--i:3"><span class="mobile-num">04</span>Contact</a>
+      <a href="#contact" class="btn btn-dark mobile-btn" style="--i:4">Hire Me</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container hero-container">
+        <div class="hero-top">
+          <div class="tag badge-pulse">
+            <span class="pulse-dot"></span>
+            Available for Projects
+          </div>
+        </div>
+
+        <div class="hero-center">
+          <h1 class="hero-title">
+            <span class="line-mask"><span class="line-reveal">Pavan Ambulkar</span></span>
+            <span class="line-mask">
+              <span class="line-reveal text-muted">
+                <span class="role-flipper" id="roleFlipper">Freelancer</span>
+                <span class="text-dark">&amp;</span>
+              </span>
+            </span>
+            <span class="line-mask"><span class="line-reveal">Consultant.</span></span>
+          </h1>
+
+          <div class="hero-subrow">
+            <p class="hero-desc">
+              I help businesses and startups craft exceptional digital products — from initial concept to high-performance frontend execution.
+            </p>
+            <div class="hero-ctas">
+              <a href="#work" class="btn btn-dark">
+                View Work
+                <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+              <a href="#contact" class="link-underline">Let's Talk</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="social-tags">
+            <a href="#" class="link-underline social-link">LinkedIn</a>
+            <a href="#" class="link-underline social-link">GitHub</a>
+            <a href="#" class="link-underline social-link">Twitter / X</a>
+          </div>
+          <a href="#work" class="scroll-down">
+            <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            Scroll
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selected Work Section -->
+    <section class="work-section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">Selected Work</span>
+            <h2 class="section-title">Projects</h2>
+          </div>
+          <a href="#contact" class="link-underline all-link">Have a project in mind?</a>
+        </div>
+
+        <div class="projects-list">
+          <!-- Hoss Electronics -->
+          <a href="https://hosselectronics.com" target="_blank" rel="noopener noreferrer" class="project-card" style="--card-bg: #e8e4df;" aria-label="Hoss Electronics — visit hosselectronics.com">
+            <div class="project-head">
+              <div class="project-meta">
+                <span class="project-num">01</span>
+                <span class="project-cat">Corporate Website · Web Design · Development</span>
+              </div>
+              <div class="project-year-wrap">
+                <span class="project-year">2026</span>
+                <div class="project-arrow-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </div>
+              </div>
+            </div>
+            <h3 class="project-title">Hoss Electronics</h3>
+            <p class="project-desc">A corporate website for an electronics manufacturing services company covering PCB assembly, box build, cable harness and prototyping, with dedicated service pages and a clear path to request a quote.</p>
+            <div class="project-tags">
+              <span class="tag">Corporate Website</span>
+              <span class="tag">Responsive</span>
+              <span class="tag">hosselectronics.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATIVE SERVICES SECTION -->
+    <section class="services-section" id="services">
+
+      <div class="container">
+        <div class="section-head text-light">
+          <div>
+            <span class="tag tag-light">Capabilities &amp; Specialization</span>
+            <h2 class="section-title">Creative Services</h2>
+          </div>
+          <p class="section-intro">Interactive capabilities designed to elevate brands, increase conversions, and launch resilient digital solutions.</p>
+        </div>
+
+        <div class="services-creative-grid">
+          <!-- Creative Card 1 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">01</span>
+              <div class="service-badge-pill">UX / Interaction</div>
+            </div>
+            <h3 class="service-name">Experience &amp; Product Design</h3>
+            <p class="service-summary">Crafting intuitive, human-centered digital experiences that guide visitors effortlessly from curiosity to conversion.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>Interactive Prototypes &amp; Wireframes</div>
+              <div class="feature-item"><span class="feature-dot"></span>Design System Architecture</div>
+              <div class="feature-item"><span class="feature-dot"></span>Frictionless User Journey Mapping</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 90%;"></span></div>
+            </div>
+          </div>
+
+          <!-- Creative Card 2 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">02</span>
+              <div class="service-badge-pill">Engineering</div>
+            </div>
+            <h3 class="service-name">Modern Web Development</h3>
+            <p class="service-summary">Blazing-fast, accessible frontends built with precision. Fluid micro-interactions, responsive grids, and clean code.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>Custom React &amp; Next.js Architecture</div>
+              <div class="feature-item"><span class="feature-dot"></span>60fps Canvas &amp; CSS Animations</div>
+              <div class="feature-item"><span class="feature-dot"></span>Core Web Vitals 95+ Scores</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 95%;"></span></div>
+            </div>
+          </div>
+
+          <!-- Creative Card 3 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">03</span>
+              <div class="service-badge-pill">Advisory</div>
+            </div>
+            <h3 class="service-name">Product Strategy &amp; Consulting</h3>
+            <p class="service-summary">Strategic technical guidance for solo founders and startup teams needing clarity before building or scaling.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>MVP Scoping &amp; Sprint Planning</div>
+              <div class="feature-item"><span class="feature-dot"></span>Code Architecture &amp; UI Audits</div>
+              <div class="feature-item"><span class="feature-dot"></span>Conversion Rate Optimization (CRO)</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 85%;"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Process Marquee Banner -->
+        <div class="creative-marquee-banner">
+          <div class="marquee-track">
+            <span>RESEARCH ✦ WIREFRAMING ✦ INTERACTIVE PROTOTYPES ✦ FULL-STACK CODING ✦ PERFORMANCE AUDIT ✦ SEO LAUNCH ✦ </span>
+            <span>RESEARCH ✦ WIREFRAMING ✦ INTERACTIVE PROTOTYPES ✦ FULL-STACK CODING ✦ PERFORMANCE AUDIT ✦ SEO LAUNCH ✦ </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container about-grid">
+        <!-- Left info -->
+        <div class="about-left">
+          <span class="tag">About Me</span>
+          <h2 class="section-title about-heading">
+            I turn ideas into<br>
+            <em class="text-muted">real products.</em>
+          </h2>
+          <p class="about-text">
+            I'm a freelance designer and consultant with 2-3 years of experience helping startups, scale-ups, and teams build digital products people actually want to use.
+          </p>
+          <p class="about-text">
+            I bridge the gap between design and engineering. Whether you need a full product sprint or a focused audit, I bring clarity and craft to every engagement.
+          </p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-number">2-3</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1</div>
+              <div class="stat-label">Project Delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right skills -->
+        <div class="about-right">
+          <div class="skills-block">
+            <div class="skill-row">
+              <div class="skill-info"><span>UI/UX Design</span><span>95%</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="--pct: 95%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span>React / Next.js</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="--pct: 90%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span>Product Strategy</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="--pct: 85%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span>SEO &amp; Performance</span><span>75%</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="--pct: 75%;"></div></div>
+            </div>
+          </div>
+
+          <div class="stack-block">
+            <p class="stack-label">Core Tech Stack</p>
+            <div class="stack-tags">
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+
+      <div class="container contact-grid">
+        <div class="contact-left">
+          <span class="tag tag-light">Get In Touch</span>
+          <h2 class="contact-title">
+            Let's build<br>
+            <span class="text-faded">something</span><br>
+            extraordinary.
+          </h2>
+          <p class="contact-sub">
+            Have an idea in mind or need strategic advice for your product? Drop a note and I’ll get back to you within 24 hours.
+          </p>
+
+          <div class="contact-details">
+            <a href="mailto:pavanambulkar18@gmail.com" class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <div class="contact-meta-label">Direct Email</div>
+                <div class="contact-meta-val">pavanambulkar18@gmail.com </div>
+              </div>
+            </a>
+            
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <div class="form-card">
+            <div id="formSuccessMessage" class="form-success hidden">
+              <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <h3>Message Received!</h3>
+              <p>Thanks for reaching out. I'll review your project details and get back to you shortly.</p>
+            </div>
+
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="budget">Project Budget (Rs.)</label>
+                <input type="number" id="budget" name="budget" min="1" step="1" placeholder="e.g. 5000" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project Overview</label>
+                <textarea id="message" name="message" rows="4" placeholder="Briefly describe your goals, timeline, and what you'd like to achieve..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-light submit-btn" id="submitBtn">
+                <span>Send Message</span>
+                <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <span class="footer-logo">Pavan Ambulkar<span class="logo-dot">.</span></span>
+          <p class="footer-tagline">Independent Freelancer &amp; Product Consultant crafting high-impact digital experiences.</p>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="back-to-top" id="backToTop" aria-label="Scroll to top">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Pavan Ambulakr. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Twitter / X</a>
+          <a href="#">ReadCV</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="hyperspeed.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
