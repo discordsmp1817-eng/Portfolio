@@ -34,8 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
       flyLogo.className = 'intro-logo';
       flyLogo.setAttribute('aria-hidden', 'true');
       flyLogo.innerHTML = navLogo.innerHTML;
-      flyLogo.style.fontSize = Math.round(Math.min(Math.max(window.innerWidth * 0.2, 72), 150)) + 'px';
+      // The logo mark is sized in em, so this font-size sets the splash size (mark = 1.9 x font-size)
+      flyLogo.style.fontSize = Math.round(Math.min(Math.max(Math.min(window.innerWidth, window.innerHeight) * 0.14, 48), 84)) + 'px';
       document.body.appendChild(flyLogo);
+
+      // Long names: shrink the big logo so it always fits on screen
+      const maxW = window.innerWidth * 0.84;
+      const naturalW = flyLogo.getBoundingClientRect().width;
+      if (naturalW > maxW) {
+        flyLogo.style.fontSize = (parseFloat(flyLogo.style.fontSize) * maxW / naturalW).toFixed(1) + 'px';
+      }
 
       // Measure
       const fly = flyLogo.getBoundingClientRect();           // natural size, top-left at (0,0)
@@ -101,7 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tailColors: ['#d856bf', '#6750a2', '#c247ac'],
       headColors: ['#03b3c3', '#0e5ea5', '#324555'],
       poleColors: ['#03b3c3'],
-      interactive: true // hold the mouse / finger down to boost
+      interactive: true, // click / tap (or hold) anywhere to boost
+      reducedMotion: 'ignore' // laptops with "reduce motion" on were getting a slowed, non-interactive background
     });
   } else if (hyperHost) {
     hyperHost.dataset.status = 'script-missing';
@@ -157,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navIndicator = document.getElementById('navIndicator');
   const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
   const navContent = navbar ? navbar.querySelector('.nav-content') : null;
-  const spyIds = ['work', 'services', 'about', 'contact'];
+  const spyIds = ['services', 'work', 'about', 'contact']; // must match the order on the page
   let activeLink = null;
   let hoverLink = null;
   let lastY = window.scrollY;
@@ -280,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. HERO ROLE FLIPPER ANIMATION
-  const roles = ["Freelancer", "Consultant", "Designer", "Developer"];
+  const roles = ["Freelancer", "Designer", "Developer"]; // not "Consultant": the title's last line already says it
   const roleFlipper = document.getElementById('roleFlipper');
   let currentRoleIndex = 0;
 

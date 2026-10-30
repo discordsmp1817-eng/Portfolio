@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freelancer & Product Consultant | Minimal Portfolio</title>
-  <meta name="description" content="Clean, animated, and responsive portfolio built with modern HTML5, CSS3, and JavaScript.">
+  <title>Pavan Ambulkar | Freelance Web Developer</title>
+  <meta name="description" content="Freelance web developer building fast, modern, responsive websites for small businesses and startups.">
 
   <!-- Entry animation flag: runs before first paint so the site never flashes before the intro.
-       Skipped automatically for visitors who prefer reduced motion. -->
+       Set RESPECT_REDUCED_MOTION to true if you want visitors whose system has "reduce motion"
+       turned on (common on Windows laptops with animations off) to skip the intro. -->
   <script>
     (function () {
+      var RESPECT_REDUCED_MOTION = false;
       var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduce) {
+      if (!(RESPECT_REDUCED_MOTION && reduce)) {
         document.documentElement.classList.add('intro-active');
         // Safety net: never leave the site locked if something goes wrong
         setTimeout(function () {
@@ -20,6 +22,11 @@
       }
     })();
   </script>
+
+  <!-- Site icon (replaces the stale icon your browser cached for 127.0.0.1:5500) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=2">
+  <link rel="apple-touch-icon" href="favicon.png?v=2">
 
   <!-- Plus Jakarta Sans Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,12 +50,12 @@
   <!-- Navigation -->
   <header class="header" id="navbar">
     <div class="container nav-content">
-      <a href="#home" class="logo">Pavan Ambulkar<span class="logo-dot">.</span></a>
+      <a href="#home" class="logo" aria-label="Pavan Ambulkar, back to top"><span class="logo-mark">PA</span></a>
 
       <nav class="desktop-nav" aria-label="Primary">
         <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
-        <a href="#work" class="nav-link" data-section="work">Work</a>
         <a href="#services" class="nav-link" data-section="services">Services</a>
+        <a href="#work" class="nav-link" data-section="work">Work</a>
         <a href="#about" class="nav-link" data-section="about">About</a>
         <a href="#contact" class="nav-link" data-section="contact">Contact</a>
       </nav>
@@ -73,8 +80,8 @@
   <!-- Mobile Drawer -->
   <div class="mobile-menu" id="mobileMenu">
     <nav class="mobile-nav-links">
-      <a href="#work" class="mobile-link" style="--i:0"><span class="mobile-num">01</span>Work</a>
-      <a href="#services" class="mobile-link" style="--i:1"><span class="mobile-num">02</span>Services</a>
+      <a href="#services" class="mobile-link" style="--i:0"><span class="mobile-num">01</span>Services</a>
+      <a href="#work" class="mobile-link" style="--i:1"><span class="mobile-num">02</span>Work</a>
       <a href="#about" class="mobile-link" style="--i:2"><span class="mobile-num">03</span>About</a>
       <a href="#contact" class="mobile-link" style="--i:3"><span class="mobile-num">04</span>Contact</a>
       <a href="#contact" class="btn btn-dark mobile-btn" style="--i:4">Hire Me</a>
@@ -88,33 +95,34 @@
         <div class="hero-top">
           <div class="tag badge-pulse">
             <span class="pulse-dot"></span>
-            Available for Projects
+            Freelance Web Developer
           </div>
         </div>
 
         <div class="hero-center">
           <h1 class="hero-title">
-            <span class="line-mask"><span class="line-reveal">Pavan Ambulkar</span></span>
-            <span class="line-mask">
-              <span class="line-reveal text-muted">
-                <span class="role-flipper" id="roleFlipper">Freelancer</span>
-                <span class="text-dark">&amp;</span>
-              </span>
-            </span>
-            <span class="line-mask"><span class="line-reveal">Consultant.</span></span>
+            <span class="line-mask"><span class="line-reveal">Modern Websites for</span></span>
+            <span class="line-mask"><span class="line-reveal"><span class="text-gradient">Real Businesses.</span></span></span>
           </h1>
 
           <div class="hero-subrow">
             <p class="hero-desc">
-              I help businesses and startups craft exceptional digital products — from initial concept to high-performance frontend execution.
+              I design and build fast, responsive websites that help small businesses and startups look professional, get found online and turn visitors into customers.
             </p>
             <div class="hero-ctas">
-              <a href="#work" class="btn btn-dark">
-                View Work
+              <a href="#contact" class="btn btn-dark">
+                Get Free Consultation
                 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
               </a>
-              <a href="#contact" class="link-underline">Let's Talk</a>
+              <a href="#work" class="btn btn-ghost">View Work</a>
             </div>
+          </div>
+
+          <div class="hero-chips">
+            <span class="tag">Responsive Design</span>
+            <span class="tag">Fast Loading</span>
+            <span class="tag">SEO Friendly</span>
+            <span class="tag">Clean Code</span>
           </div>
         </div>
 
@@ -124,7 +132,7 @@
             <a href="#" class="link-underline social-link">GitHub</a>
             <a href="#" class="link-underline social-link">Twitter / X</a>
           </div>
-          <a href="#work" class="scroll-down">
+          <a href="#services" class="scroll-down">
             <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
             Scroll
           </a>
@@ -132,20 +140,101 @@
       </div>
     </section>
 
-    <!-- Selected Work Section -->
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+
+      <div class="container">
+        <div class="section-head text-light">
+          <div>
+            <span class="tag tag-light">What I Do</span>
+            <h2 class="section-title">My Services</h2>
+          </div>
+          <p class="section-intro">Everything your business needs to get online and grow: from the first sketch to a launched, fast and easy-to-use website.</p>
+        </div>
+
+        <div class="services-creative-grid">
+          <!-- Service 1 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">01</span>
+              <div class="service-badge-pill">Design</div>
+            </div>
+            <h3 class="service-name">UI/UX Design</h3>
+            <p class="service-summary">Clean, modern layouts that are easy to use and guide visitors naturally towards getting in touch or buying.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>Wireframes &amp; clickable prototypes</div>
+              <div class="feature-item"><span class="feature-dot"></span>Mobile-first, responsive layouts</div>
+              <div class="feature-item"><span class="feature-dot"></span>Clear, conversion-focused user flows</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 90%;"></span></div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">02</span>
+              <div class="service-badge-pill">Development</div>
+            </div>
+            <h3 class="service-name">Web Development</h3>
+            <p class="service-summary">Fast, accessible websites built with clean code, from simple landing pages to full business websites.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>Business sites &amp; landing pages</div>
+              <div class="feature-item"><span class="feature-dot"></span>Works on every screen size</div>
+              <div class="feature-item"><span class="feature-dot"></span>Speed &amp; SEO best practices</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 95%;"></span></div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="creative-service-card" data-tilt>
+            <div class="service-glow-orb"></div>
+            <div class="service-top-row">
+              <span class="service-index">03</span>
+              <div class="service-badge-pill">Advisory</div>
+            </div>
+            <h3 class="service-name">Consulting</h3>
+            <p class="service-summary">Honest, practical advice on your website and online presence before you spend on building or redesigning.</p>
+            <div class="service-features">
+              <div class="feature-item"><span class="feature-dot"></span>Website &amp; UX audits</div>
+              <div class="feature-item"><span class="feature-dot"></span>Project scoping &amp; planning</div>
+              <div class="feature-item"><span class="feature-dot"></span>SEO &amp; conversion guidance</div>
+            </div>
+            <div class="service-footer-visual">
+              <div class="bar-visual"><span style="width: 85%;"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process Marquee Banner -->
+        <div class="creative-marquee-banner">
+          <div class="marquee-track">
+            <span>DISCOVERY ✦ DESIGN ✦ DEVELOPMENT ✦ TESTING ✦ LAUNCH ✦ SUPPORT ✦ </span>
+            <span>DISCOVERY ✦ DESIGN ✦ DEVELOPMENT ✦ TESTING ✦ LAUNCH ✦ SUPPORT ✦ </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects Section -->
     <section class="work-section" id="work">
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="tag">Selected Work</span>
-            <h2 class="section-title">Projects</h2>
+            <span class="tag">Featured Projects</span>
+            <h2 class="section-title">Real Projects.<br>Real Clients.</h2>
           </div>
           <a href="#contact" class="link-underline all-link">Have a project in mind?</a>
         </div>
 
         <div class="projects-list">
           <!-- Hoss Electronics -->
-          <a href="https://hosselectronics.com" target="_blank" rel="noopener noreferrer" class="project-card" style="--card-bg: #e8e4df;" aria-label="Hoss Electronics — visit hosselectronics.com">
+          <a href="https://hosselectronics.com" target="_blank" rel="noopener noreferrer" class="project-card" aria-label="Hoss Electronics — visit hosselectronics.com">
             <div class="project-head">
               <div class="project-meta">
                 <span class="project-num">01</span>
@@ -165,88 +254,11 @@
               <span class="tag">Responsive</span>
               <span class="tag">hosselectronics.com</span>
             </div>
+            <span class="project-link">
+              Visit live site
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </span>
           </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CREATIVE SERVICES SECTION -->
-    <section class="services-section" id="services">
-
-      <div class="container">
-        <div class="section-head text-light">
-          <div>
-            <span class="tag tag-light">Capabilities &amp; Specialization</span>
-            <h2 class="section-title">Creative Services</h2>
-          </div>
-          <p class="section-intro">Interactive capabilities designed to elevate brands, increase conversions, and launch resilient digital solutions.</p>
-        </div>
-
-        <div class="services-creative-grid">
-          <!-- Creative Card 1 -->
-          <div class="creative-service-card" data-tilt>
-            <div class="service-glow-orb"></div>
-            <div class="service-top-row">
-              <span class="service-index">01</span>
-              <div class="service-badge-pill">UX / Interaction</div>
-            </div>
-            <h3 class="service-name">Experience &amp; Product Design</h3>
-            <p class="service-summary">Crafting intuitive, human-centered digital experiences that guide visitors effortlessly from curiosity to conversion.</p>
-            <div class="service-features">
-              <div class="feature-item"><span class="feature-dot"></span>Interactive Prototypes &amp; Wireframes</div>
-              <div class="feature-item"><span class="feature-dot"></span>Design System Architecture</div>
-              <div class="feature-item"><span class="feature-dot"></span>Frictionless User Journey Mapping</div>
-            </div>
-            <div class="service-footer-visual">
-              <div class="bar-visual"><span style="width: 90%;"></span></div>
-            </div>
-          </div>
-
-          <!-- Creative Card 2 -->
-          <div class="creative-service-card" data-tilt>
-            <div class="service-glow-orb"></div>
-            <div class="service-top-row">
-              <span class="service-index">02</span>
-              <div class="service-badge-pill">Engineering</div>
-            </div>
-            <h3 class="service-name">Modern Web Development</h3>
-            <p class="service-summary">Blazing-fast, accessible frontends built with precision. Fluid micro-interactions, responsive grids, and clean code.</p>
-            <div class="service-features">
-              <div class="feature-item"><span class="feature-dot"></span>Custom React &amp; Next.js Architecture</div>
-              <div class="feature-item"><span class="feature-dot"></span>60fps Canvas &amp; CSS Animations</div>
-              <div class="feature-item"><span class="feature-dot"></span>Core Web Vitals 95+ Scores</div>
-            </div>
-            <div class="service-footer-visual">
-              <div class="bar-visual"><span style="width: 95%;"></span></div>
-            </div>
-          </div>
-
-          <!-- Creative Card 3 -->
-          <div class="creative-service-card" data-tilt>
-            <div class="service-glow-orb"></div>
-            <div class="service-top-row">
-              <span class="service-index">03</span>
-              <div class="service-badge-pill">Advisory</div>
-            </div>
-            <h3 class="service-name">Product Strategy &amp; Consulting</h3>
-            <p class="service-summary">Strategic technical guidance for solo founders and startup teams needing clarity before building or scaling.</p>
-            <div class="service-features">
-              <div class="feature-item"><span class="feature-dot"></span>MVP Scoping &amp; Sprint Planning</div>
-              <div class="feature-item"><span class="feature-dot"></span>Code Architecture &amp; UI Audits</div>
-              <div class="feature-item"><span class="feature-dot"></span>Conversion Rate Optimization (CRO)</div>
-            </div>
-            <div class="service-footer-visual">
-              <div class="bar-visual"><span style="width: 85%;"></span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Interactive Process Marquee Banner -->
-        <div class="creative-marquee-banner">
-          <div class="marquee-track">
-            <span>RESEARCH ✦ WIREFRAMING ✦ INTERACTIVE PROTOTYPES ✦ FULL-STACK CODING ✦ PERFORMANCE AUDIT ✦ SEO LAUNCH ✦ </span>
-            <span>RESEARCH ✦ WIREFRAMING ✦ INTERACTIVE PROTOTYPES ✦ FULL-STACK CODING ✦ PERFORMANCE AUDIT ✦ SEO LAUNCH ✦ </span>
-          </div>
         </div>
       </div>
     </section>
@@ -256,19 +268,25 @@
       <div class="container about-grid">
         <!-- Left info -->
         <div class="about-left">
+          <!-- To use a real photo: replace the initials block with <img src="your-photo.jpg" alt="Pavan Ambulkar"> -->
+          <div class="about-avatar" aria-hidden="true">
+            <span class="about-avatar-initials">PA</span>
+            <span class="about-avatar-badge"><span class="pulse-dot"></span>Available</span>
+          </div>
+
           <span class="tag">About Me</span>
           <h2 class="section-title about-heading">
-            I turn ideas into<br>
-            <em class="text-muted">real products.</em>
+            Hi, I'm<br>
+            <em class="text-muted">Pavan Ambulkar.</em>
           </h2>
           <p class="about-text">
-            I'm a freelance designer and consultant with 2-3 years of experience helping startups, scale-ups, and teams build digital products people actually want to use.
+            I'm a freelance web developer and designer with 2-3 years of experience helping small businesses and startups get online with fast, good-looking websites that people actually enjoy using.
           </p>
           <p class="about-text">
-            I bridge the gap between design and engineering. Whether you need a full product sprint or a focused audit, I bring clarity and craft to every engagement.
+            I handle both design and development, so you work with one person from the first idea to launch day. Clear communication, honest timelines and clean work on every project.
           </p>
 
-          <div class="stats-row">
+          <div class="stats-row stats-row-3">
             <div class="stat-item">
               <div class="stat-number">2-3</div>
               <div class="stat-label">Years Experience</div>
@@ -277,41 +295,105 @@
               <div class="stat-number">1</div>
               <div class="stat-label">Project Delivered</div>
             </div>
+            <div class="stat-item">
+              <div class="stat-number">24h</div>
+              <div class="stat-label">Reply Time</div>
+            </div>
           </div>
         </div>
 
-        <!-- Right skills -->
+        <!-- Right: what you get -->
         <div class="about-right">
-          <div class="skills-block">
-            <div class="skill-row">
-              <div class="skill-info"><span>UI/UX Design</span><span>95%</span></div>
-              <div class="skill-bar"><div class="skill-progress" style="--pct: 95%;"></div></div>
+          <div class="value-grid">
+            <div class="value-card">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"></path></svg>
+              </div>
+              <div>
+                <h3 class="value-title">Clean, modern design</h3>
+                <p class="value-text">Sharp layouts that represent your brand well and stay out of your visitors' way.</p>
+              </div>
             </div>
-            <div class="skill-row">
-              <div class="skill-info"><span>React / Next.js</span><span>90%</span></div>
-              <div class="skill-bar"><div class="skill-progress" style="--pct: 90%;"></div></div>
+            <div class="value-card">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <div>
+                <h3 class="value-title">Built to perform</h3>
+                <p class="value-text">Lightweight code, optimised images and SEO basics from day one.</p>
+              </div>
             </div>
-            <div class="skill-row">
-              <div class="skill-info"><span>Product Strategy</span><span>85%</span></div>
-              <div class="skill-bar"><div class="skill-progress" style="--pct: 85%;"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="skill-info"><span>SEO &amp; Performance</span><span>75%</span></div>
-              <div class="skill-bar"><div class="skill-progress" style="--pct: 75%;"></div></div>
+            <div class="value-card">
+              <div class="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div>
+                <h3 class="value-title">Clear communication</h3>
+                <p class="value-text">Regular updates, honest timelines and no surprises along the way.</p>
+              </div>
             </div>
           </div>
 
           <div class="stack-block">
             <p class="stack-label">Core Tech Stack</p>
             <div class="stack-tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
               <span class="tag">React</span>
-              <span class="tag">Next.js</span>
-              <span class="tag">Node.js</span>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="tag">How I Work</span>
+            <h2 class="section-title">A Simple &amp;<br>Transparent Process</h2>
+          </div>
+          <p class="section-intro">Six clear steps from the first conversation to launch, so you always know what's happening and what comes next.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="process-num">01</div>
+            <h3 class="process-title">Discovery</h3>
+            <p class="process-text">We talk through your goals, your audience and what success looks like.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">02</div>
+            <h3 class="process-title">Planning</h3>
+            <p class="process-text">I map out the pages, features and timeline with a clear, agreed scope.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">03</div>
+            <h3 class="process-title">Design</h3>
+            <p class="process-text">Wireframes and visual design for you to review and approve before any code.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">04</div>
+            <h3 class="process-title">Development</h3>
+            <p class="process-text">I build a fast, responsive website with clean, maintainable code.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">05</div>
+            <h3 class="process-title">Testing</h3>
+            <p class="process-text">Device and browser checks, speed tuning and your feedback rounds.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">06</div>
+            <h3 class="process-title">Launch &amp; Support</h3>
+            <p class="process-text">We go live together, with guidance and support after launch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS: add a "What Clients Say" section here once you have real client quotes. -->
 
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
@@ -320,25 +402,42 @@
         <div class="contact-left">
           <span class="tag tag-light">Get In Touch</span>
           <h2 class="contact-title">
-            Let's build<br>
-            <span class="text-faded">something</span><br>
-            extraordinary.
+            Let's Build<br>
+            <span class="text-faded">Something</span><br>
+            Great.
           </h2>
           <p class="contact-sub">
-            Have an idea in mind or need strategic advice for your product? Drop a note and I’ll get back to you within 24 hours.
+            Have a project in mind or need advice on your website? Send me a message and I'll get back to you within 24 hours.
           </p>
 
           <div class="contact-details">
-            <a href="mailto:pavanambulkar18@gmail.com" class="contact-item">
+            <a href="mailto:hello@example.com" class="contact-item">
               <div class="contact-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </div>
               <div>
                 <div class="contact-meta-label">Direct Email</div>
-                <div class="contact-meta-val">pavanambulkar18@gmail.com </div>
+                <div class="contact-meta-val">hello@example.com</div>
               </div>
             </a>
-            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <div class="contact-meta-label">Location</div>
+                <div class="contact-meta-val">Available Worldwide (Remote)</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <div class="contact-meta-label">Response Time</div>
+                <div class="contact-meta-val">Within 24 hours</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -364,13 +463,13 @@
               </div>
 
               <div class="form-group">
-                <label for="budget">Project Budget (Rs.)</label>
-                <input type="number" id="budget" name="budget" min="1" step="1" placeholder="e.g. 5000" required>
+                <label for="budget">Project Budget (₹)</label>
+                <input type="number" id="budget" name="budget" min="1" step="1" placeholder="e.g. 15000" required>
               </div>
 
               <div class="form-group">
                 <label for="message">Project Overview</label>
-                <textarea id="message" name="message" rows="4" placeholder="Briefly describe your goals, timeline, and what you'd like to achieve..." required></textarea>
+                <textarea id="message" name="message" rows="4" placeholder="Tell me about your business, what you need and when you'd like to launch..." required></textarea>
               </div>
 
               <button type="submit" class="btn btn-light submit-btn" id="submitBtn">
@@ -391,12 +490,12 @@
       <div class="footer-top">
         <div>
           <span class="footer-logo">Pavan Ambulkar<span class="logo-dot">.</span></span>
-          <p class="footer-tagline">Independent Freelancer &amp; Product Consultant crafting high-impact digital experiences.</p>
+          <p class="footer-tagline">Freelance web developer building fast, modern websites for real businesses.</p>
         </div>
 
         <nav class="footer-nav">
-          <a href="#work">Work</a>
           <a href="#services">Services</a>
+          <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -407,12 +506,11 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 Pavan Ambulakr. All rights reserved.</p>
+        <p>© 2026 Pavan Ambulkar. All rights reserved.</p>
         <div class="footer-socials">
           <a href="#">LinkedIn</a>
           <a href="#">GitHub</a>
           <a href="#">Twitter / X</a>
-          <a href="#">ReadCV</a>
         </div>
       </div>
     </div>

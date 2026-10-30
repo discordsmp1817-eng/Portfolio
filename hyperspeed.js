@@ -303,6 +303,7 @@
     this.camV = BASE_SPEED * this.o.speed;
     this.fov = this.o.fov;
     this.boosting = false;
+    this.boostUntil = 0; // a quick click still gives a short burst of speed
     this.shift = [0, 0.2];
     this.shiftTarget = [0, 0.2];
     this.lastNow = 0;
@@ -388,7 +389,7 @@
       self.shiftTarget[0] = (e.clientX / window.innerWidth - 0.5) * 0.08;
       self.shiftTarget[1] = 0.2 + (0.5 - e.clientY / window.innerHeight) * 0.05;
     };
-    this._onDown = function () { self.boosting = true; };
+    this._onDown = function () { self.boosting = true; self.boostUntil = performance.now() + 1400; };
     this._onUp = function () { self.boosting = false; };
     this._onVis = function () {
       if (document.hidden) { cancelAnimationFrame(self.raf); self.raf = 0; }
@@ -505,8 +506,9 @@
 
   Hyperspeed.prototype._step = function (dt) {
     var o = this.o;
-    var targetV = BASE_SPEED * o.speed * this.motionScale * (this.boosting ? o.boost : 1);
-    var targetFov = this.boosting ? o.boostFov : o.fov;
+    var boosting = this.boosting || performance.now() < this.boostUntil;
+    var targetV = BASE_SPEED * o.speed * this.motionScale * (boosting ? o.boost : 1);
+    var targetFov = boosting ? o.boostFov : o.fov;
     this.camV += (targetV - this.camV) * Math.min(1, dt * 2.5);
     this.fov += (targetFov - this.fov) * Math.min(1, dt * 3);
     this.camZ += this.camV * dt;

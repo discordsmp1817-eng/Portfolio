@@ -1456,3 +1456,496 @@ html.intro-active:not(.intro-wipe) .hero-bottom {
     padding: 2rem 1.5rem;
   }
 }
+
+/* ==========================================================================
+   CONTENT REFRESH: hero, about avatar, pricing, process
+   (appended last so it layers on top of the earlier rules)
+   ========================================================================== */
+
+/* ---- Hero ---- */
+.hero-title {
+  font-size: clamp(2.8rem, 6.8vw, 6.2rem);
+  line-height: 1.02;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #03b3c3, #6d8fe0 55%, #d856bf);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-desc {
+  max-width: 500px;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-dark);
+  border: 1px solid var(--border-color);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.8s 0.7s ease forwards;
+}
+
+html.intro-active:not(.intro-wipe) .hero-chips {
+  animation-play-state: paused;
+}
+
+/* ---- Featured project link ---- */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.project-link svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s var(--transition-smooth);
+}
+
+.project-card:hover .project-link svg {
+  transform: translate(2px, -2px);
+}
+
+/* ---- About ---- */
+.about-avatar {
+  position: relative;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background:
+    radial-gradient(circle at 25% 15%, rgba(3, 179, 195, 0.35), transparent 60%),
+    radial-gradient(circle at 85% 90%, rgba(216, 86, 191, 0.35), transparent 60%),
+    rgba(255, 255, 255, 0.05);
+}
+
+.about-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-avatar-initials {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--text-dark);
+}
+
+.about-avatar-badge {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(5, 5, 7, 0.72);
+  border: 1px solid var(--border-color);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.stats-row.stats-row-3 {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.value-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.value-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1.4rem 1.5rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.045);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s var(--transition-smooth), border-color 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.value-icon {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #03b3c3;
+  border: 1px solid rgba(3, 179, 195, 0.5);
+  background: rgba(3, 179, 195, 0.08);
+}
+
+.value-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.value-title {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.25rem;
+}
+
+.value-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* ---- Pricing ---- */
+.pricing-section,
+.process-section {
+  padding: 8rem 0;
+  background-color: rgba(5, 5, 7, 0.5);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.price-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.25rem 2rem;
+  border-radius: 1.75rem;
+  border: 1px solid var(--border-color);
+  background: rgba(14, 14, 18, 0.72);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s var(--transition-smooth), border-color 0.4s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.price-card.featured {
+  border-color: rgba(3, 179, 195, 0.55);
+  background:
+    radial-gradient(circle at top right, rgba(3, 179, 195, 0.14), transparent 60%),
+    rgba(14, 14, 18, 0.8);
+  box-shadow: 0 0 0 1px rgba(3, 179, 195, 0.25), 0 20px 60px rgba(3, 179, 195, 0.12);
+}
+
+.price-badge {
+  position: absolute;
+  top: -0.8rem;
+  left: 2rem;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #03b3c3, #d856bf);
+  color: #050507;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.price-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.price-desc {
+  margin: 0.5rem 0 1.5rem;
+  min-height: 2.8em;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.price-amount {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-from {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.price-value {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.price-list {
+  flex: 1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.price-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.price-list svg {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.1rem;
+  color: #03b3c3;
+}
+
+.price-cta {
+  width: 100%;
+}
+
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.addon-card {
+  padding: 1.6rem 1.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.addon-title {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.addon-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+}
+
+.addon-list li::before {
+  content: '✦';
+  margin-right: 0.6rem;
+  font-size: 0.7rem;
+  color: #03b3c3;
+}
+
+.addon-card p {
+  margin-bottom: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---- Process ---- */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.process-step {
+  padding: 1.75rem;
+  border-radius: 1.4rem;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s var(--transition-smooth), border-color 0.3s ease;
+}
+
+.process-step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.process-num {
+  width: 2.6rem;
+  height: 2.6rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.1rem;
+  border-radius: 50%;
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #050507;
+  background: linear-gradient(135deg, #03b3c3, #d856bf);
+}
+
+.process-title {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.process-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---- Navbar: room for the longer name and five links ---- */
+.header.scrolled .nav-content {
+  max-width: 960px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 992px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-inline: auto;
+  }
+
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-nav,
+  .nav-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 680px) {
+  .pricing-section,
+  .process-section {
+    padding: 5rem 0;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-row.stats-row-3 {
+    gap: 0.75rem;
+  }
+
+  .stats-row.stats-row-3 .stat-number {
+    font-size: 2.1rem;
+  }
+
+  .hero-chips {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Two-line section titles were inheriting the body line-height */
+.section-title {
+  line-height: 1.08;
+}
+
+/* ==========================================================================
+   LOGO MARK (navbar + entry animation)
+   Sized in em so the entry animation can scale it up and fly it into the navbar.
+   ========================================================================== */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.5em;
+  background: linear-gradient(135deg, #03b3c3, #d856bf);
+  color: #050507;
+  font-weight: 800;
+  font-size: 1em;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 6px 22px rgba(3, 179, 195, 0.3);
+  transition: transform 0.4s var(--transition-smooth), box-shadow 0.3s ease;
+}
+
+.logo:hover .logo-mark {
+  transform: rotate(-6deg) scale(1.07);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 8px 28px rgba(216, 86, 191, 0.45);
+}
+
+.intro-logo {
+  display: flex;
+  line-height: 1;
+}
+
+.intro-logo .logo-mark {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15), 0 20px 70px rgba(3, 179, 195, 0.35);
+}
